@@ -9,7 +9,7 @@ echo ^| Description : Fournit un modŠle pour les scripts batch.                 
 echo ^| Remarques   : Le fichier doit ˆtre sauvegard‚ dans l'encodage ANSI(cp1252). ^|
 echo +-----------------------------------------------------------------------------+
 echo(
-echo Faire Ctrl+C pour quitter le programme ou appuyer sur une touche pour continuer.
+echo Faites Ctrl+C pour quitter le programme ou appuyez sur une touche pour continuer.
 
 REM On fait une pause pour que la fenˆtre reste affich‚e
 pause>nul
@@ -24,5 +24,5 @@ REM +--FIN-DU-PROGRAMME---------------------------------------------------------
 
 echo(
 REM On fait une pause pour que la fenˆtre reste affich‚e
-echo Appuyer sur une touche pour quitter le programme.
+echo Appuyez sur une touche pour quitter le programme.
 pause>nul 

@@ -5,7 +5,7 @@
 ' each countact found inside the source vCard file
 ' Usage: cscript.exe SplitVCard.vbs "C:\Bla\Bla\Bla\Contacts.vcf"
 ' Source : http://www.c-amie.co.uk/technical/android-vcf-outlook-import/
-
+' Modified by boissonnfive@hotmail.com to read UTF-8 VCF file
 
 Option Explicit
 Dim i
@@ -36,11 +36,27 @@ if (WScript.Arguments.Count > 0) then
 		if (NOT fso.FolderExists(strTargetPath)) then
 			fso.CreateFolder(strTargetPath)
 		end if
+
+
 		' Scan the source file and split the VCF
-		set file = fso.OpenTextFile(strSource, 1)
-		strText = file.ReadAll()
-		call file.close()
-		set file = nothing
+		Dim objStream
+
+		Set objStream = CreateObject("ADODB.Stream")
+		
+		objStream.CharSet = "utf-8"
+		objStream.Open
+		objStream.LoadFromFile(strSource)
+		
+		strText = objStream.ReadText()
+		
+		objStream.Close
+		Set objStream = Nothing
+
+
+		' set file = fso.OpenTextFile(strSource, 1)
+		' strText = file.ReadAll()
+		' call file.close()
+		' set file = nothing
 
 		arrContacts = Split(strText, "END:VCARD")
 		if (IsArray(arrContacts)) then
